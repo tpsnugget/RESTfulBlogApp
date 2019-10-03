@@ -4,7 +4,7 @@
 
 <% blogs.forEach((e) => { %>
    <div> <h2> <%= e.title %> </h2> </div>
-   <img src=" <%= e.image %> ">
+   <div><img src=" <%= e.image %> " style="width: 30%;"></div>
    <span> <%= e.created %> </span>
    <p> <%= e.body %> </p>
 <% }) %>

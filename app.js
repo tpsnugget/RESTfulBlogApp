@@ -18,9 +18,9 @@ app.use(bodyParser.urlencoded({extended: true}))
 
 var Blog = mongoose.model('Blog', blogSchema)
 
-//=================
-//    ROUTES
-//=================
+//=================================================
+//    ROUTES                           ============
+//=================================================
 app.get('/', (req, res) => {
    res.redirect('/blogs')
 })
@@ -31,9 +31,22 @@ app.get('/blogs', (req, res) => {
       else {res.render('index', {blogs: blogs})}
    })
 })
-//=================
-//    ROUTES
-//=================
+
+app.get('/blogs/new', (req, res) => {
+   res.render('new')
+})
+
+app.post('/blogs', (req, res) => {
+   var title = req.body.newTitle
+   var newBlog = {title: title}
+   Blog.create(newBlog, (err, blog) => {
+      if (err) {console.log(err)}
+      else {res.redirect('blogs')}
+   })
+})
+//=================================================
+//    ROUTES                           ============
+//=================================================
 app.listen(3000, process.env.IP, () => {
    console.log('The server is running...')
 })
