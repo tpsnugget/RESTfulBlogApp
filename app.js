@@ -1,6 +1,6 @@
 var express       = require('express'),
     app           = express(),
-    bodyParser    = require('body-parser')
+    bodyParser    = require('body-parser'),
     mongoose      = require('mongoose')
 
 mongoose.connect('mongodb://localhost:27017/restful_blog_app', {useNewUrlParser: true})
@@ -25,6 +25,7 @@ app.get('/', (req, res) => {
    res.redirect('/blogs')
 })
 
+// INDEX ROUTE
 app.get('/blogs', (req, res) => {
    Blog.find({}, (err, blogs) => {
       if (err) {console.log(err)}
@@ -32,16 +33,25 @@ app.get('/blogs', (req, res) => {
    })
 })
 
+// NEW ROUTE
 app.get('/blogs/new', (req, res) => {
    res.render('new')
 })
 
+// CREATE ROUTE
 app.post('/blogs', (req, res) => {
-   var title = req.body.newTitle
-   var newBlog = {title: title}
-   Blog.create(newBlog, (err, blog) => {
-      if (err) {console.log(err)}
+   var data = req.body.blog
+   Blog.create(data, (err, blog) => {
+      if (err) {res.render('new')}
       else {res.redirect('blogs')}
+   })
+})
+
+// SHOW ROUTE
+app.get('/blogs/:id', (req, res) => {
+   Blog.findById(req.params.id, (err, blog) => {
+      if (err) {res.redirect('/blogs')}
+      else {res.render('show', {e: blog})}
    })
 })
 //=================================================
