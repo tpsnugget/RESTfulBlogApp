@@ -11,3 +11,11 @@
 
 # Version 3: Colt Steele's Web Dev Bootcamp, Section 31
 # Chapter 314, RESTful Blog App: SHOW
+
+# Version 3: Colt Steele's Web Dev Bootcamp, Section 31
+# Chapter 315, RESTful Blog App: EDIT and UPDATE
+   - Start with EDIT ROUTE
+
+# Version 3: Colt Steele's Web Dev Bootcamp, Section 31
+# Chapter 318, RESTful Blog App: Final Touches
+   DONE.

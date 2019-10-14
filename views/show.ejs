@@ -8,6 +8,10 @@
          <div class='content'>
             <span> <%= e.created.toDateString() %> </span>
          </div>
+         <a href="/blogs/<%= e._id %>/edit" class="ui blue basic button">Edit</a>
+         <form action="/blogs/<%= e._id %>?_method=DELETE" method="POST" id="deleteButton">
+            <button class="ui red basic button">Delete</button>
+         </form>
       </div>
    </div>
    <p> <%= e.body %> </p>
